@@ -124,6 +124,16 @@ export default async function ClinicPage({ params }: Props) {
             <h2 id="about" className="text-2xl">About the clinic</h2>
             <p className="max-w-(--container-reading)">{clinic.summary}</p>
             {/* W5: show the clinic's "What to bring" list here, the same way this page shows its prices below. */}
+            {clinic.whatToBring && clinic.whatToBring.length > 0 && (
+              <div className="grid gap-3">
+                <h3 className="text-xl">What to bring</h3>
+                <ul className="grid max-w-(--container-reading) divide-y divide-line border-y border-line">
+                  {clinic.whatToBring.map((entry, index) => (
+                    <li key={entry.id ?? index} className="py-3">{entry.item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
 
           {repairs.length > 0 && (
